@@ -9,13 +9,6 @@ import org.scalatest.FlatSpec
   */
 class TransfersProcessorComponentSpec extends FlatSpec with TestEnv {
 
-  class ImmediateTransfersProcessor extends TransfersProcessor {
-
-    override def schedule(transfer: Transfer): Unit = process(transfer)
-
-    override def close(): Unit = ()
-  }
-
   override val transferProcessor: TransfersProcessor = new ImmediateTransfersProcessor
 
   it should "complete transfers for unlimited accounts" in {
